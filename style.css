@@ -1,0 +1,281 @@
+/* --- Modern Editor Theme - CSS Reset & Foundational Styles --- */
+:root {
+  /* Color Palette (Inspired by VS Code's Dark+ Theme) */
+  --font-sans: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+  
+  /* Light Theme */
+  --primary-bg-light: #F3F3F3;
+  --secondary-bg-light: #FFFFFF;
+  --header-bg-light: #F3F3F3;
+  --panel-bg-light: #FFFFFF;
+  --text-color-light: #24292E;
+  --text-color-secondary-light: #586069;
+  --accent-color-light: #0366D6;
+  --border-color-light: #E1E4E8;
+  --icon-color-light: #444D56;
+  --button-hover-bg-light: #E1E4E8;
+  
+  /* Dark Theme (VS Code Aligned) */
+  --primary-bg-dark: #1E1E1E;
+  --secondary-bg-dark: #252526;
+  --header-bg-dark: #333333;
+  --panel-bg-dark: #1E1E1E;
+  --text-color-dark: #CCCCCC;
+  --text-color-secondary-dark: #8B949E;
+  --accent-color-dark: #007ACC;
+  --border-color-dark: #3c3c3c;
+  --icon-color-dark: #C5C5C5;
+  --button-hover-bg-dark: #4A4A4A;
+  
+  /* Syntax Highlighting Icons */
+  --icon-html: #E34F26;
+  --icon-css: #1572B6;
+  --icon-js: #F7DF1E;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  overflow: hidden;
+  transition: background-color 0.2s linear, color 0.2s linear;
+}
+
+.editor-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* --- Theme Class Definitions --- */
+body.light-mode {
+  --primary-bg: var(--primary-bg-light);
+  --secondary-bg: var(--secondary-bg-light);
+  --header-bg: var(--header-bg-light);
+  --panel-bg: var(--panel-bg-light);
+  --text-color: var(--text-color-light);
+  --text-color-secondary: var(--text-color-secondary-light);
+  --accent-color: var(--accent-color-light);
+  --border-color: var(--border-color-light);
+  --icon-color: var(--icon-color-light);
+  --button-hover-bg: var(--button-hover-bg-light);
+}
+
+body.dark-mode {
+  --primary-bg: var(--primary-bg-dark);
+  --secondary-bg: var(--secondary-bg-dark);
+  --header-bg: var(--header-bg-dark);
+  --panel-bg: var(--panel-bg-dark);
+  --text-color: var(--text-color-dark);
+  --text-color-secondary: var(--text-color-secondary-dark);
+  --accent-color: var(--accent-color-dark);
+  --border-color: var(--border-color-dark);
+  --icon-color: var(--icon-color-dark);
+  --button-hover-bg: var(--button-hover-bg-dark);
+}
+
+/* --- Header & Title Bar --- */
+.main-header {
+  display: flex;
+  align-items: center;
+  background-color: var(--secondary-bg);
+  padding: 0 10px 0 20px;
+  height: 48px;
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 20px;
+}
+
+.logo h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* --- File Tabs --- */
+.file-tabs {
+  display: flex;
+  height: 100%;
+  flex-grow: 1;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  cursor: pointer;
+  border-right: 1px solid var(--border-color);
+  color: var(--text-color-secondary);
+  font-size: 14px;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.tab:hover {
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+}
+
+.tab.active {
+  background-color: var(--panel-bg);
+  color: var(--text-color);
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.tab i {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+/* --- Header Actions --- */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+#format-code-btn, #upload-btn, #live-preview-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  color: var(--text-color);
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  font-family: inherit;
+  font-size: 13px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#format-code-btn:hover, #upload-btn:hover, #live-preview-btn:hover {
+  background-color: var(--button-hover-bg);
+}
+
+/* --- Modern Theme Switcher --- */
+.theme-switcher button {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    width: 36px;
+    height: 36px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.theme-switcher button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+/* --- Main Editor Content --- */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+}
+
+.editor-pane {
+  position: relative;
+  width: 100%; /* Full width by default */
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.preview-pane {
+  width: 0; /* Hidden by default */
+  height: 100%;
+  background-color: #fff;
+  display: none; /* Use display to completely remove it from layout */
+}
+
+#preview-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.resizer {
+  width: 5px;
+  background-color: var(--border-color);
+  cursor: col-resize;
+  flex-shrink: 0;
+  display: none; /* Hidden by default */
+}
+
+/* When preview is active */
+body.preview-active .editor-pane {
+  width: 50%;
+}
+
+body.preview-active .preview-pane,
+body.preview-active .resizer {
+  display: block; /* Show the pane and resizer */
+}
+
+body.preview-active .preview-pane {
+    width: 50%;
+}
+
+.panel-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+/* --- Ace Editor Overrides --- */
+#html, #css, #js {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  font-size: 15px !important;
+  line-height: 1.6;
+}
+
+.ace_editor {
+  background: var(--panel-bg) !important;
+  color: var(--text-color) !important;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace !important;
+}
+
+.ace_gutter {
+  background: var(--panel-bg) !important;
+  border-right: 1px solid var(--border-color);
+}
+
+/* --- Status Bar --- */
+.status-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: var(--secondary-bg);
+  color: var(--text-color-secondary);
+  height: 24px;
+  padding: 0 15px;
+  font-size: 12px;
+  border-top: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+/* --- Icon Colors --- */
+.fa-html5 { color: var(--icon-html); }
+.fa-css3-alt { color: var(--icon-css); }
+.fa-js { color: var(--icon-js); }
