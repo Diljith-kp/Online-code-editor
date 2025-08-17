@@ -10,7 +10,8 @@ An elegant, web-based **online code editor** built with HTML, CSS, and JavaScrip
 
 Check out the live version here:
 
-[**▶ Try the Live Editor**](https://diljith-kp.github.io/online-code-editor) 
+[**▶ Try the Live Editor**](https://diljith-kp.github.io/online-code-editor/
+) 
 
 ---
 
